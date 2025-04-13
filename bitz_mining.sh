@@ -29,6 +29,8 @@ show_title() {
     clear
     echo -e "${BLUE}===============================================${NC}"
     echo -e "${BLUE}            BITZ挖矿系统管理工具             ${NC}"
+    echo -e "${BLUE}    推特@XIAOLINBIJI  免费开源 勿信收费       ${NC}"
+    echo -e "${BLUE}               脚本问题可推特私信             ${NC}"
     echo -e "${BLUE}===============================================${NC}"
     echo -e "${YELLOW}当前工作目录: ${WORK_DIR}${NC}"
     echo -e "${BLUE}===============================================${NC}"
