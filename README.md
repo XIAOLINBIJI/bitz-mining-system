@@ -1,8 +1,7 @@
 # BITZ Mining System / BITZ挖矿系统
 
-[English](#english) | [中文](#chinese)
-
-<a name="english"></a>
+<details>
+<summary>English</summary>
 
 ## Overview
 
@@ -88,7 +87,10 @@ A: Adjust the number of CPU cores used per wallet, balance system resources, and
 **Q: How often should auto-claim be set?**  
 A: We recommend setting it to 60-360 minutes, adjusting based on your mining efficiency and network fee conditions.
 
-<a name="chinese"></a>
+</details>
+
+<details>
+<summary>中文</summary>
 
 ## 简介
 
@@ -155,3 +157,4 @@ A: 调整每个钱包使用的CPU核心数，均衡分配系统资源，并确�
 
 **Q: 自动索赔间隔应该设置多久？**  
 A: 建议设置为60-360分钟，根据您的挖矿效率和网络费用情况调整。
+</details>
