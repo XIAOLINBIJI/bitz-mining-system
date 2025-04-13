@@ -48,7 +48,7 @@ read -p "请输入要转入ETH的目标钱包地址: " TARGET_WALLET
 
 # 验证钱包地址格式
 if [ -z "$TARGET_WALLET" ] || [ ${#TARGET_WALLET} -lt 32 ]; then
-    echo -e "${RED}错误: 无效的钱包地址，请提供有效的Solana钱包地址${NC}"
+    echo -e "${RED}错误: 无效的钱包地址，请提供有效的钱包地址${NC}"
     echo -e "\n${BLUE}按回车键返回主菜单...${NC}"
     read
     exit 1
