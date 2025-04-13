@@ -23,6 +23,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 clear
 echo -e "${BLUE}===============================================${NC}"
 echo -e "${BLUE}      BITZ挖矿系统 - 安装依赖和创建钱包      ${NC}"
+echo -e "${BLUE}    推特@XIAOLINBIJI  免费开源 勿信收费       ${NC}"
 echo -e "${BLUE}===============================================${NC}"
 echo ""
 

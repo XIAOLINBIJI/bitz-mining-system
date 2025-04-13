@@ -25,6 +25,7 @@ RPC_URL=$($SOLANA_BIN/solana config get | grep "RPC URL" | awk '{print $3}')
 clear
 echo -e "${BLUE}===============================================${NC}"
 echo -e "${BLUE}        BITZ挖矿系统 - 查询账户余额           ${NC}"
+echo -e "${BLUE}    推特@XIAOLINBIJI  免费开源 勿信收费       ${NC}"
 echo -e "${BLUE}===============================================${NC}"
 echo ""
 

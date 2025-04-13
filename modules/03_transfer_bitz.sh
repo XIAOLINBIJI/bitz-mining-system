@@ -25,6 +25,7 @@ RPC_URL="https://eclipse.helius-rpc.com/"
 clear
 echo -e "${BLUE}===============================================${NC}"
 echo -e "${BLUE}         BITZ挖矿系统 - 转移BITZ代币          ${NC}"
+echo -e "${BLUE}    推特@XIAOLINBIJI  免费开源 勿信收费       ${NC}"
 echo -e "${BLUE}===============================================${NC}"
 echo ""
 
