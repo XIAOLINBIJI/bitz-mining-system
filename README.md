@@ -1,4 +1,94 @@
-# BITZ 挖矿系统使用指南
+# BITZ Mining System / BITZ挖矿系统
+
+[English](#english) | [中文](#chinese)
+
+<a name="english"></a>
+
+## Overview
+
+ePoW is a Proof of Work (PoW) mining mechanism specifically designed for token mining on EclipseFND. $BITZ is the first token to be mined on EclipseFND through the ePoW mechanism with a total supply of 5 million tokens.
+
+## Features
+
+- **Multi-wallet Support**: Create and manage multiple mining wallets
+- **Automated Setup**: Quick installation of dependencies and wallet creation
+- **Mining Configuration**: Easily customize mining parameters
+- **Token Management**: Transfer BITZ and ETH between wallets
+- **Error Monitoring**: Automatic detection and restart of failed mining instances
+- **RPC Management**: Simple switching between different RPC nodes
+- **Balance Tracking**: Query all wallets for BITZ and ETH balances
+
+## Quick Installation
+
+```bash
+wget -O bitz_install.sh https://raw.githubusercontent.com/XIAOLINBIJI/bitz-mining-system/main/quick_install.sh && chmod +x bitz_install.sh && ./bitz_install.sh
+```
+
+## Usage Guide
+
+### First-time Setup
+
+1. Run option 1 to install dependencies and create wallets
+2. Fund each wallet with at least 0.0005 ETH
+3. Run option 2 to configure and start mining
+
+### Routine Operations
+
+- **Check Balances**: Use option 7 to view wallet balances
+- **Transfer Tokens**: Use options 3/4 to transfer BITZ or ETH
+- **Change RPC**: Use option 6 to switch RPC nodes
+- **Monitor Mining**: Use option 5 to enable automatic monitoring
+
+## System Requirements
+
+- Linux-based operating system
+- Internet connection
+- Sufficient ETH for gas fees (minimum 0.0005 ETH per wallet)
+- CPU with multiple cores for optimal performance
+
+## Important Notes
+
+1. Each wallet requires a minimum of 0.0005 ETH to start mining
+2. The system allocates resources based on your CPU core count
+3. When transferring tokens, a small amount is retained for transaction fees
+4. Monitoring service automatically restarts failed mining instances
+
+## Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| Mining won't start | Ensure each wallet has sufficient ETH balance |
+| RPC connection error | Switch to another RPC address using option 6 |
+| Low mining efficiency | Adjust the CPU cores used per wallet |
+| Monitoring service issues | Manually stop all related processes before restarting |
+
+## Mining Commands
+
+Check running instances:
+```bash
+screen -ls
+```
+
+Connect to a specific mining instance:
+```bash
+screen -r bitz1
+```
+
+## FAQ
+
+**Q: How much ETH is needed to start mining?**  
+A: Each wallet needs at least 0.0005 ETH.
+
+**Q: How can I check mining status?**  
+A: Use `screen -ls` to view all running mining instances, then use `screen -r bitzN` (e.g., `screen -r bitz1`) to connect to a specific instance.
+
+**Q: How can I optimize mining performance?**  
+A: Adjust the number of CPU cores used per wallet, balance system resources, and ensure you're using stable and fast RPC nodes.
+
+**Q: How often should auto-claim be set?**  
+A: We recommend setting it to 60-360 minutes, adjusting based on your mining efficiency and network fee conditions.
+
+<a name="chinese"></a>
 
 ## 简介
 
