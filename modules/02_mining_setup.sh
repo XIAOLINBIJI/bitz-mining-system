@@ -87,9 +87,9 @@ fi
 
 echo -e "${BLUE}每个钱包实例将使用约 ${CORES_PER_INSTANCE} 个CPU核心${NC}"
 
-# 询问自动索赔间隔
-read -p "请输入自动索赔间隔(分钟)，0表示不自动索赔 [默认: 360]: " CLAIM_INTERVAL
-CLAIM_INTERVAL=${CLAIM_INTERVAL:-360}
+## 询问自动索赔间隔
+#read -p "请输入自动索赔间隔(分钟)，0表示不自动索赔 [默认: 360]: " CLAIM_INTERVAL
+#CLAIM_INTERVAL=${CLAIM_INTERVAL:-360}
 
 # 询问钱包启动间隔时间
 read -p "请输入每个钱包启动的间隔时间(秒)，0表示同时启动 [默认: 0]: " WALLET_START_INTERVAL
@@ -101,11 +101,11 @@ echo -e "${YELLOW}将启动 ${WALLET_COUNT}/${TOTAL_WALLET_COUNT} 个挖矿实�
 echo -e "${YELLOW}总计使用 ${CORES_TO_USE}/${TOTAL_CORES} 个CPU核心${NC}"
 echo -e "${YELLOW}每个实例使用约 ${CORES_PER_INSTANCE} 个CPU核心${NC}"
 
-if [ "$CLAIM_INTERVAL" -gt 0 ]; then
-    echo -e "${YELLOW}每 ${CLAIM_INTERVAL} 分钟自动索赔一次${NC}"
-else
-    echo -e "${YELLOW}不启用自动索赔${NC}"
-fi
+#if [ "$CLAIM_INTERVAL" -gt 0 ]; then
+#    echo -e "${YELLOW}每 ${CLAIM_INTERVAL} 分钟自动索赔一次${NC}"
+#else
+#    echo -e "${YELLOW}不启用自动索赔${NC}"
+#fi
 
 if [ "$WALLET_START_INTERVAL" -gt 0 ]; then
     echo -e "${YELLOW}每个钱包将间隔 ${WALLET_START_INTERVAL} 秒依次启动${NC}"
@@ -124,58 +124,6 @@ if [[ $CONFIRM =~ ^[Nn]$ ]]; then
     echo -e "\n${BLUE}按回车键返回主菜单...${NC}"
     read
     exit 0
-fi
-
-# 检查钱包ETH余额
-echo -e "\n${GREEN}检查钱包ETH余额...${NC}"
-BALANCE_CHECK_FAILED=false
-
-for ((i=1; i<=$WALLET_COUNT; i++)); do
-    WALLET_FILE="$WORK_DIR/wallet$i.json"
-    
-    # 检查钱包文件是否存在
-    if [ ! -f "$WALLET_FILE" ]; then
-        echo -e "${RED}错误: 钱包文件 $WALLET_FILE 不存在${NC}"
-        echo -e "\n${BLUE}按回车键返回主菜单...${NC}"
-        read
-        exit 1
-    fi
-    
-    WALLET_ADDRESS=$($SOLANA_BIN/solana address -k "$WALLET_FILE")
-    
-    echo -e "${YELLOW}检查钱包 $i ($WALLET_ADDRESS) 余额...${NC}"
-    BALANCE_OUTPUT=$(bitz account --keypair "$WALLET_FILE" 2>&1)
-    
-    # 更精确地提取ETH余额
-    ETH_BALANCE=$(echo "$BALANCE_OUTPUT" | grep -i "eth balance" | awk '{print $NF}')
-    if [ -z "$ETH_BALANCE" ]; then
-        ETH_BALANCE="0.0"
-    fi
-    
-    echo -e "ETH余额: $ETH_BALANCE ETH"
-    
-    # 检查ETH余额是否足够
-    if (( $(echo "$ETH_BALANCE < 0.0005" | bc -l) )); then
-        echo -e "${RED}警告: 钱包 $i 的ETH余额不足!${NC}"
-        echo -e "${YELLOW}请向此钱包地址发送至少0.0005 ETH后再继续${NC}"
-        BALANCE_CHECK_FAILED=true
-    else
-        echo -e "${GREEN}钱包 $i ETH余额充足，可以挖矿${NC}"
-    fi
-    
-    echo ""
-done
-
-# 如果有钱包余额不足，提示用户
-if [ "$BALANCE_CHECK_FAILED" = true ]; then
-    echo -e "${RED}检测到一个或多个钱包ETH余额不足!${NC}"
-    read -p "是否跳过余额检查并继续? [y/N]: " SKIP_CHECK
-    if [[ ! $SKIP_CHECK =~ ^[Yy]$ ]]; then
-        echo "请充值后再尝试启动挖矿"
-        echo -e "\n${BLUE}按回车键返回主菜单...${NC}"
-        read
-        exit 0
-    fi
 fi
 
 # 保存配置
